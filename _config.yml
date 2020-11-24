@@ -51,7 +51,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 baseurl: ''
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Seoul
 
 google_analytics:
   id: ''          # Fill with your Google Analytics ID
@@ -81,7 +81,7 @@ disqus:
 theme_mode: dual
 
 # boolean type, the global switch for ToC in posts.
-toc: true
+toc: false
 
 paginate: 10
 
