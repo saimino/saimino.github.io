@@ -35,7 +35,7 @@ views:
     name: 논문
     filters:
       and:
-        - file.inFolder("AI/Paper")
+        - file.inFolder("Paper")
     order:
       - file.name
       - date

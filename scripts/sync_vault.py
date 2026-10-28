@@ -17,7 +17,8 @@ from pathlib import Path
 
 PRIVATE_TAG = "private"
 NOTE_EXTS = {".md", ".base", ".canvas"}
-PUBLISH_DIR = Path("Resource")
+# 볼트에서 "Resource" 또는 "3. Resource"처럼 번호가 붙은 Resource 폴더를 올린다
+PUBLISH_DIR_PATTERN = re.compile(r"(\d+\.\s*)?Resource")
 SITE = Path(__file__).resolve().parent.parent / "site"
 CONTENT = Path(__file__).resolve().parent.parent / "content"
 
@@ -85,13 +86,13 @@ def main():
     notes, private, by_name = [], [], {}
     for p, rel in files:
         if p.suffix in NOTE_EXTS:
-            if rel.parts[0] == PUBLISH_DIR.name:
+            if PUBLISH_DIR_PATTERN.fullmatch(rel.parts[0]):
                 (private if is_private(p) else notes).append((p, rel))
         else:
             by_name.setdefault(p.name, (p, rel))
 
     # 사이트에서는 Resource 단계를 빼고 AI, Dev, Math 같은 폴더가 바로 보이게 한다
-    targets = [(p, rel.relative_to(PUBLISH_DIR)) for p, rel in notes]
+    targets = [(p, Path(*rel.parts[1:])) for p, rel in notes]
     targets += [(p, p.relative_to(SITE)) for p in sorted(SITE.rglob("*")) if p.is_file()]
 
     # 공개 노트가 쓰는 첨부 파일만 고른다
