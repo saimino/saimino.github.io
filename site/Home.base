@@ -1,0 +1,72 @@
+filters:
+  and:
+    - file.ext == "md"
+    - file.name != "index"
+    - file.name != "404"
+    - not:
+        - file.inFolder("tags")
+formulas:
+  folder: file.folder
+  modified: date(file.modified).format("YYYY-MM-DD")
+properties:
+  file.name:
+    displayName: 제목
+  date:
+    displayName: 작성일
+  formula.modified:
+    displayName: 수정일
+  formula.folder:
+    displayName: 위치
+  file.tags:
+    displayName: 태그
+views:
+  - type: list
+    name: 최근 글
+    filters:
+      and:
+        - file.hasProperty("date")
+    order:
+      - file.name
+      - date
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: 논문
+    filters:
+      and:
+        - file.inFolder("AI/Paper")
+    order:
+      - file.name
+      - date
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: 프로젝트
+    filters:
+      and:
+        - file.hasTag("type/project")
+    order:
+      - file.name
+      - formula.folder
+  - type: table
+    name: 주제별 노트
+    groupBy:
+      property: formula.folder
+      direction: ASC
+    order:
+      - file.name
+    sort:
+      - property: file.name
+        direction: ASC
+  - type: table
+    name: 최근 수정
+    order:
+      - file.name
+      - formula.modified
+      - formula.folder
+    sort:
+      - property: file.modified
+        direction: DESC
+    limit: 10

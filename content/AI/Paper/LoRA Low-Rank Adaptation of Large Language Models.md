@@ -92,7 +92,7 @@ LoRA 공식 GitHub 코드에서는 PyTorch의 Linear 클래스를 상속해 A, B
 - 추론 시 latency가 발생하지 않는다.
 - 다른 downstream task로 쉽게 전환할 수 있다. (BA만 교체)
 
-### 999. Result
+### 5. Result
 
 ![[36-f14ee39754.png]]
 

@@ -115,3 +115,17 @@ body[data-slug="index"] .content-meta,
     font-variant-numeric: tabular-nums;
   }
 }
+
+// 홈에 끼워 넣은 Home.base: 인용 카드 모양과 제목, 원본 링크를 숨긴다
+article blockquote.transclude[data-url$=".base"] {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 1.5rem 0 0;
+
+  > h1,
+  > .transclude-src {
+    display: none;
+  }
+}
