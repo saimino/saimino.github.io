@@ -5,16 +5,16 @@
 - 노트(.md, .base, .canvas)는 private 태그가 없으면 모두 올린다.
   태그는 frontmatter의 tags(목록이나 문자열)와 본문의 #private 둘 다 본다.
 - 이미지 같은 첨부 파일은 공개되는 노트가 실제로 쓰는 것만 올린다.
-- Templates 폴더와 숨김 폴더(.obsidian, .trash 등)는 올리지 않는다.
+- 템플릿 폴더(.obsidian/templates.json의 folder)와 숨김 폴더(.obsidian, .trash 등)는 올리지 않는다.
 - 볼트 루트의 index.md가 사이트 첫 화면이다.
 """
+import json
 import re
 import shutil
 import sys
 from pathlib import Path
 
 PRIVATE_TAG = "private"
-SKIP_DIRS = {"Templates"}
 NOTE_EXTS = {".md", ".base", ".canvas"}
 CONTENT = Path(__file__).resolve().parent.parent / "content"
 
@@ -51,10 +51,19 @@ def is_private(path):
     return any(t == PRIVATE_TAG or t.startswith(PRIVATE_TAG + "/") for t in tags)
 
 
+def template_dir(vault):
+    try:
+        folder = json.loads((vault / ".obsidian" / "templates.json").read_text(encoding="utf-8")).get("folder")
+    except (OSError, ValueError):
+        folder = None
+    return Path(folder.strip("/")) if folder else Path("Templates")
+
+
 def walk(vault):
+    skip = template_dir(vault)
     for p in sorted(vault.rglob("*")):
         rel = p.relative_to(vault)
-        if any(part.startswith(".") for part in rel.parts) or rel.parts[0] in SKIP_DIRS:
+        if any(part.startswith(".") for part in rel.parts) or rel.parts[: len(skip.parts)] == skip.parts:
             continue
         if p.is_file():
             yield p, rel

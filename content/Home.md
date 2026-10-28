@@ -20,7 +20,7 @@ SORT deadline ASC
 
 ```dataview
 TASK
-FROM "Project" OR "Journal"
+FROM "Project" OR "Area"
 WHERE !completed
 GROUP BY file.link
 ```
@@ -37,7 +37,7 @@ SORT file.mtime DESC
 
 ```dataview
 LIST
-FROM -"Templates"
+FROM -"Resource/Templates"
 WHERE status = "draft"
 SORT file.mtime DESC
 ```
@@ -46,7 +46,7 @@ SORT file.mtime DESC
 
 ```dataview
 LIST
-FROM -"Templates"
+FROM -"Resource/Templates"
 WHERE file.size < 100
 SORT file.folder ASC
 ```
@@ -55,7 +55,7 @@ SORT file.folder ASC
 
 ```dataview
 TABLE dateformat(file.mtime, "yyyy-MM-dd") AS "수정일", file.folder AS "위치"
-FROM -"Templates" AND -"Journal"
+FROM -"Resource/Templates"
 SORT file.mtime DESC
 LIMIT 10
 ```
@@ -70,7 +70,7 @@ LIMIT 10
 
 ```dataview
 TABLE rows.file.link AS "노트"
-FROM -"Templates" AND -"Journal"
+FROM -"Resource/Templates"
 GROUP BY file.folder AS "폴더"
 SORT key ASC
 ```
