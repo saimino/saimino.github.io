@@ -1,5 +1,5 @@
 #!/bin/sh
-# 옵시디언 볼트 전체를 content/로 가져와 GitHub에 올린다. private 태그가 붙은 노트는 빠진다.
+# 옵시디언 볼트의 Resource 폴더를 content/로 가져와 GitHub에 올린다. private 태그가 붙은 노트는 빠진다.
 # 사용법: sh scripts/publish.sh "커밋 메시지"
 #         sh scripts/publish.sh --dry-run   (올라갈 목록만 확인)
 set -e

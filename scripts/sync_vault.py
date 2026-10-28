@@ -1,8 +1,9 @@
-"""옵시디언 볼트 전체를 content/로 복사한다. private 태그가 붙은 노트는 복사하지 않는다.
+"""옵시디언 볼트의 Resource 폴더를 content/로 복사한다. private 태그가 붙은 노트는 복사하지 않는다.
 
 사용법: python3 scripts/sync_vault.py <볼트 경로> [--dry-run]
 
-- 노트(.md, .base, .canvas)는 private 태그가 없으면 모두 올린다.
+- 올리는 노트는 Resource 폴더 안의 노트와 사이트 첫 화면 파일(볼트 루트의 index.md, 전체 글.base)뿐이다.
+- 그중 private 태그가 없는 노트(.md, .base, .canvas)를 올린다.
   태그는 frontmatter의 tags(목록이나 문자열)와 본문의 #private 둘 다 본다.
 - 이미지 같은 첨부 파일은 공개되는 노트가 실제로 쓰는 것만 올린다.
 - 템플릿 폴더(.obsidian/templates.json의 folder)와 숨김 폴더(.obsidian, .trash 등)는 올리지 않는다.
@@ -16,6 +17,8 @@ from pathlib import Path
 
 PRIVATE_TAG = "private"
 NOTE_EXTS = {".md", ".base", ".canvas"}
+PUBLISH_DIRS = [Path("Resource")]
+ROOT_FILES = {Path("index.md"), Path("전체 글.base")}
 CONTENT = Path(__file__).resolve().parent.parent / "content"
 
 
@@ -82,11 +85,14 @@ def main():
     notes, private, by_name = [], [], {}
     for p, rel in files:
         if p.suffix in NOTE_EXTS:
-            (private if is_private(p) else notes).append((p, rel))
+            published = rel in ROOT_FILES or any(rel.parts[: len(d.parts)] == d.parts for d in PUBLISH_DIRS)
+            if published:
+                (private if is_private(p) else notes).append((p, rel))
         else:
             by_name.setdefault(p.name, (p, rel))
 
-    targets = notes
+    # 사이트에서는 Resource 단계를 빼고 AI, Dev, Math 같은 폴더가 바로 보이게 한다
+    targets = [(p, rel.relative_to(PUBLISH_DIRS[0]) if rel.parts[0] == PUBLISH_DIRS[0].name else rel) for p, rel in notes]
     if not any(rel == Path("index.md") for _, rel in targets):
         print("! 볼트 루트에 index.md가 없어 사이트 첫 화면이 비어 있게 됩니다.", file=sys.stderr)
 
