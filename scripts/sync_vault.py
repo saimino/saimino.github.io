@@ -7,7 +7,7 @@
 - 그중 private 태그가 없는 노트(.md, .base, .canvas)를 올린다.
   태그는 frontmatter의 tags(목록이나 문자열)와 본문의 #private 둘 다 본다.
 - 이미지 같은 첨부 파일은 공개되는 노트가 실제로 쓰는 것만 올린다.
-- 템플릿 폴더(.obsidian/templates.json의 folder)와 숨김 폴더(.obsidian, .trash 등)는 올리지 않는다.
+- 탐색기 정렬 규칙 파일(sortspec.md), 템플릿 폴더(.obsidian/templates.json의 folder)와 숨김 폴더(.obsidian, .trash 등)는 올리지 않는다.
 """
 import json
 import re
@@ -85,6 +85,8 @@ def main():
 
     notes, private, by_name = [], [], {}
     for p, rel in files:
+        if p.name == "sortspec.md":  # 탐색기 정렬 규칙 파일은 올리지 않는다
+            continue
         if p.suffix in NOTE_EXTS:
             if PUBLISH_DIR_PATTERN.fullmatch(rel.parts[0]):
                 (private if is_private(p) else notes).append((p, rel))
