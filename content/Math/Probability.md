@@ -2,7 +2,6 @@
 tags:
   - type/concept
   - math
-status: draft
 ---
 
 - 확률(Probaility) @@@

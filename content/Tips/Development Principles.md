@@ -2,7 +2,6 @@
 tags:
   - type/tip
   - dev/python
-status: draft
 ---
 
 - 함수 관련

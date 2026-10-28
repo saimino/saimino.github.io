@@ -2,7 +2,6 @@
 tags:
   - type/concept
   - ai/llm
-status: draft
 ---
 
 # Transformer to Qwen3 Architecture Evolution

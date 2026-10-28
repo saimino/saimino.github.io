@@ -2,7 +2,6 @@
 tags:
   - type/tip
   - ai/llm
-status: draft
 ---
 
 (edit: 20231108)

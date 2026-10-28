@@ -2,7 +2,6 @@
 tags:
   - type/project
   - ai/vision
-status: paused
 started: 2025-07-01
 deadline: 
 ---

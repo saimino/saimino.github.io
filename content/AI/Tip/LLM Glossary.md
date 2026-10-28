@@ -2,7 +2,6 @@
 tags:
   - type/tip
   - ai/llm
-status: draft
 ---
 
 **1. LLM, LLM 학습과 관련된 용어들**

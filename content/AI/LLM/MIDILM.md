@@ -2,7 +2,6 @@
 tags:
   - type/project
   - ai/llm
-status: active
 started: 2025-11-04
 deadline: 
 ---

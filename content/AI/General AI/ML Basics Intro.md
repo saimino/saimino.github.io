@@ -2,7 +2,6 @@
 tags:
   - type/concept
   - ai/general
-status: draft
 ---
 
 - polar

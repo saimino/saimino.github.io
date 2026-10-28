@@ -2,7 +2,6 @@
 tags:
   - type/concept
   - math
-status: draft
 ---
 
 - 유클리디언 디스턴스

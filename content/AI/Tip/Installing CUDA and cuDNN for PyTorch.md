@@ -2,7 +2,6 @@
 tags:
   - type/tip
   - dev/python
-status: draft
 ---
 
 (update 23/09/25)

@@ -2,7 +2,6 @@
 tags:
   - type/concept
   - math
-status: draft
 ---
 
 딥러닝에서는 미분이 중요 

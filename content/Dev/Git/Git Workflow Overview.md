@@ -1,5 +1,4 @@
 ---
-status: draft
 tags:
   - dev/git
 ---
