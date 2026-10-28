@@ -17,27 +17,27 @@ configuration:
     typography:
       header: Noto Sans KR
       body: Noto Sans KR
-      code: IBM Plex Mono
+      code: JetBrains Mono
     colors:
       lightMode:
-        light: "#faf8f8"
-        lightgray: "#e5e5e5"
-        gray: "#b8b8b8"
-        darkgray: "#4e4e4e"
-        dark: "#2b2b2b"
-        secondary: "#284b63"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#fff23688"
+        light: "#ffffff"
+        lightgray: "#ececee"
+        gray: "#a0a0a8"
+        darkgray: "#3a3a40"
+        dark: "#18181b"
+        secondary: "#2563eb"
+        tertiary: "#60a5fa"
+        highlight: rgba(37, 99, 235, 0.07)
+        textHighlight: "#fde04788"
       darkMode:
-        light: "#161618"
-        lightgray: "#393639"
-        gray: "#646464"
-        darkgray: "#d4d4d4"
-        dark: "#ebebec"
-        secondary: "#7b97aa"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
+        light: "#141416"
+        lightgray: "#2a2a2f"
+        gray: "#6e6e78"
+        darkgray: "#d4d4d8"
+        dark: "#f4f4f5"
+        secondary: "#7aa7ff"
+        tertiary: "#a5c4ff"
+        highlight: rgba(122, 167, 255, 0.10)
         textHighlight: "#b3aa0288"
 plugins:
   - source: "@quartz-community/created-modified-date"
@@ -131,11 +131,15 @@ plugins:
     enabled: true
   - source: "@quartz-community/explorer"
     enabled: true
+    options:
+      title: 카테고리
+      folderClickBehavior: collapse
+      folderDefaultState: collapsed
     layout:
       position: left
       priority: 50
   - source: "@quartz-community/graph"
-    enabled: true
+    enabled: false
     layout:
       position: right
       priority: 10
@@ -159,6 +163,8 @@ plugins:
       priority: 10
   - source: "@quartz-community/content-meta"
     enabled: true
+    options:
+      showReadingTime: false
     layout:
       position: beforeBody
       priority: 20
@@ -202,8 +208,8 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
+        GitHub: https://github.com/saimino
+        Tistory: https://choimino.tistory.com
     layout:
       position: footer
       priority: 50
@@ -230,7 +236,7 @@ plugins:
         - tags
         - aliases
       excludedProperties: []
-      hidePropertiesView: false
+      hidePropertiesView: true
       delimiters: ---
       language: yaml
     order: 5

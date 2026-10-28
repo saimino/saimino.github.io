@@ -1,0 +1,18 @@
+filters:
+  and:
+    - file.ext == "md"
+    - file.hasProperty("date")
+properties:
+  file.name:
+    displayName: 제목
+  date:
+    displayName: 작성일
+views:
+  - type: list
+    name: 전체 글
+    order:
+      - file.name
+      - date
+    sort:
+      - property: date
+        direction: DESC
