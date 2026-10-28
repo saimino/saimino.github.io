@@ -1,7 +1,7 @@
 ---
 title: "Mixture of LoRA Experts (MoLE)"
 date: "2024-12-19"
-tags: ["Paper"]
+tags: ["type/paper"]
 aliases: ["tistory-39"]
 source: "https://choimino.tistory.com/39"
 ---

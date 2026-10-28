@@ -1,7 +1,7 @@
 ---
 title: "GPT Understands, Too"
 date: "2024-08-12"
-tags: ["Paper"]
+tags: ["type/paper"]
 aliases: ["tistory-38"]
 source: "https://choimino.tistory.com/38"
 ---

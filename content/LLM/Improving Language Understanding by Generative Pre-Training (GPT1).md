@@ -1,7 +1,7 @@
 ---
 title: "Improving Language Understanding by Generative Pre-Training (GPT1)"
 date: "2024-08-10"
-tags: ["Paper"]
+tags: ["type/paper"]
 aliases: ["tistory-37"]
 source: "https://choimino.tistory.com/37"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "LoRA: Low-Rank Adaptation of Large Language Models"
 date: "2024-08-10"
-tags: ["Paper"]
+tags: ["type/paper"]
 aliases: ["tistory-36"]
 source: "https://choimino.tistory.com/36"
 ---

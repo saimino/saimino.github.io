@@ -1,7 +1,7 @@
 ---
 title: "Attention Is All You Need (Attention Mechanism & Transformers)"
 date: "2024-08-05"
-tags: ["AI"]
+tags: ["type/paper"]
 aliases: ["tistory-34"]
 source: "https://choimino.tistory.com/34"
 ---

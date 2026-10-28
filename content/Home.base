@@ -35,7 +35,7 @@ views:
     name: 논문
     filters:
       and:
-        - file.inFolder("Paper")
+        - file.hasTag("type/paper")
     order:
       - file.name
       - date
