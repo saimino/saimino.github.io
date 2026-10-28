@@ -6,7 +6,7 @@
   태그는 frontmatter의 tags(목록이나 문자열)와 본문의 #private 둘 다 본다.
 - 이미지 같은 첨부 파일은 공개되는 노트가 실제로 쓰는 것만 올린다.
 - Templates 폴더와 숨김 폴더(.obsidian, .trash 등)는 올리지 않는다.
-- 볼트 루트에 index.md가 없으면 Blog/index.md를 사이트 첫 화면으로 쓴다.
+- 볼트 루트의 index.md가 사이트 첫 화면이다.
 """
 import re
 import shutil
@@ -77,12 +77,9 @@ def main():
         else:
             by_name.setdefault(p.name, (p, rel))
 
-    has_root_index = any(rel == Path("index.md") for _, rel in notes)
-    targets = []
-    for p, rel in notes:
-        if not has_root_index and rel == Path("Blog/index.md"):
-            rel = Path("index.md")
-        targets.append((p, rel))
+    targets = notes
+    if not any(rel == Path("index.md") for _, rel in targets):
+        print("! 볼트 루트에 index.md가 없어 사이트 첫 화면이 비어 있게 됩니다.", file=sys.stderr)
 
     # 공개 노트가 쓰는 첨부 파일만 고른다
     wanted = set()
